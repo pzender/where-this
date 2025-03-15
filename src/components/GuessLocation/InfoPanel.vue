@@ -47,7 +47,7 @@ function mapGuessToIcon(guess) {
   const aLat = store.target.lat
   const aLng = store.target.lng
   const angleDiff = centralAngle(guess.lat, guess.lng, aLat, aLng)
-  if (angleDiff < 1) return 'pi pi-map-marker text-green-600'
+  if (angleDiff < 1) return 'pi pi-bullseye text-green-600'
 
   const heading = directionAngle(guess.lat, guess.lng, aLat, aLng)
 

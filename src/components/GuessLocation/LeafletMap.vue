@@ -13,7 +13,7 @@ import * as L from 'leaflet'
 
 import { computed, onMounted, ref } from 'vue'
 
-import { addGuess, clearGuesses, isFinished } from '@/utils/store'
+import { addGuess, clearGuesses, hasCorrectGuess, isFinished } from '@/utils/store'
 import BaseButton from '../Base/BaseButton.vue'
 
 const mapBounds = L.LatLngBounds(L.LatLng(-90.0, -180.0), L.LatLng(90.0, 180.0))
@@ -41,10 +41,30 @@ onMounted(() => {
   //   leafletMap.on('drag', onMapDrag)
 })
 
+const icons = {
+  red: L.icon({
+    iconUrl: '/src/assets/images/marker-red.svg',
+    iconSize: [30, 40],
+    iconAnchor: [15, 40],
+  }),
+  blue: L.icon({
+    iconUrl: '/src/assets/images/marker-blue.svg',
+    iconSize: [30, 40],
+    iconAnchor: [15, 40],
+  }),
+  green: L.icon({
+    iconUrl: '/src/assets/images/marker-green.svg',
+    iconSize: [30, 40],
+    iconAnchor: [15, 40],
+  }),
+}
+
 function onMapClick(event) {
   if (isFinished()) return
+  const icon = icons.blue
   const marker = getCurrentMarker()
   marker.setLatLng(event.latlng)
+  marker.setIcon(icon)
   marker.addTo(leafletMap)
   isLocked = false
 }
@@ -70,9 +90,9 @@ function onClear() {
 function onLock() {
   if (isLocked || markers.length === 0) return
   if (isFinished()) return // probably want to do something different then
-  const currentGuess = getCurrentMarker().getLatLng()
-  addGuess(currentGuess)
-
+  const currentMarker = getCurrentMarker()
+  addGuess(currentMarker.getLatLng())
+  currentMarker.setIcon(hasCorrectGuess() ? icons.green : icons.red)
   isLocked = true
 }
 
