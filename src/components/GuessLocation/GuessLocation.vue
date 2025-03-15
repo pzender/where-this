@@ -16,7 +16,7 @@
         <div class="grow order-2 lg:order-1">
           <info-panel :description="locationData?.location_name" />
         </div>
-        <div class="order-last text-right text-xs font-thin italic">v.0.1.0</div>
+        <div class="order-last text-right text-xs font-thin italic">v.0.2.0</div>
       </div>
     </div>
   </div>

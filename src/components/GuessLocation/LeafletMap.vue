@@ -12,7 +12,6 @@ import 'leaflet/dist/leaflet.css'
 import * as L from 'leaflet'
 
 import { computed, onMounted, ref } from 'vue'
-
 import { addGuess, clearGuesses, hasCorrectGuess, isFinished } from '@/utils/store'
 import BaseButton from '../Base/BaseButton.vue'
 
@@ -43,17 +42,17 @@ onMounted(() => {
 
 const icons = {
   red: L.icon({
-    iconUrl: '/src/assets/images/marker-red.svg',
+    iconUrl: '/images/marker-red.svg',
     iconSize: [30, 40],
     iconAnchor: [15, 40],
   }),
   blue: L.icon({
-    iconUrl: '/src/assets/images/marker-blue.svg',
+    iconUrl: '/images/marker-blue.svg',
     iconSize: [30, 40],
     iconAnchor: [15, 40],
   }),
   green: L.icon({
-    iconUrl: '/src/assets/images/marker-green.svg',
+    iconUrl: '/images/marker-green.svg',
     iconSize: [30, 40],
     iconAnchor: [15, 40],
   }),
@@ -85,6 +84,10 @@ function onClear() {
   }
 
   clearGuesses()
+}
+
+function onCenter() {
+  leafletMap.panTo([0, 0])
 }
 
 function onLock() {
