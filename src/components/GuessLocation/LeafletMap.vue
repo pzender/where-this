@@ -41,17 +41,17 @@ onMounted(() => {
 
 const icons = {
   red: L.icon({
-    iconUrl: '/images/marker-red.svg',
+    iconUrl: 'images/marker-red.svg',
     iconSize: [30, 40],
     iconAnchor: [15, 40],
   }),
   blue: L.icon({
-    iconUrl: '/images/marker-blue.svg',
+    iconUrl: 'images/marker-blue.svg',
     iconSize: [30, 40],
     iconAnchor: [15, 40],
   }),
   green: L.icon({
-    iconUrl: '/images/marker-green.svg',
+    iconUrl: 'images/marker-green.svg',
     iconSize: [30, 40],
     iconAnchor: [15, 40],
   }),
