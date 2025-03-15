@@ -11,7 +11,7 @@ import { ref } from 'vue'
 const locationData = ref(null)
 
 const fetchLocationData = () => {
-  fetch('/data/2025-03.json', {
+  fetch('data/2025-03.json', {
     headers: { 'Content-type': 'application/json' },
   })
     .then((res) => res.json())

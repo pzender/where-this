@@ -37,7 +37,6 @@ onMounted(() => {
   }).addTo(leafletMap)
 
   leafletMap.on('click', onMapClick)
-  //   leafletMap.on('drag', onMapDrag)
 })
 
 const icons = {
