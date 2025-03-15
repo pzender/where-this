@@ -23,7 +23,6 @@
 </template>
 
 <script setup>
-import { defineProps } from 'vue'
 import LeafletMap from './LeafletMap.vue'
 import PhotoAttribution from './PhotoAttribution.vue'
 import PhotoPanel from './PhotoPanel.vue'
