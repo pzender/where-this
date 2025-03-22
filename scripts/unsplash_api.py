@@ -1,9 +1,10 @@
 import requests
 import json
+import os
 
 credentials = {}
 
-with open('./credentials.json')  as credentials_file:
+with open(os.path.join(os.path.dirname(__file__), './credentials.json'))  as credentials_file:
     credentials = json.load(credentials_file)
 
 unsplash_client_id = credentials['unsplashClientID']
@@ -59,7 +60,9 @@ def map_photo_response(src_data):
         'daily_challenge_date': None,
         'photo_url': src_data['urls']['raw'],
         'author_url': src_data['user']['links']['html'],
+        'page_url': src_data['links']['html'],
         'author_name': src_data['user']['name'],
+        'description': src_data['description'],
         'location_name': location['name'] if 'name' in location else f'{location["city"]}, {location["country"]}',
         'location_country': location['country'],
         'location_lat': location['position']['latitude'],
