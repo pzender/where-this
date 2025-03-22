@@ -8,6 +8,7 @@ from location_utils import match_country, get_location_info
 output_directory = os.path.abspath(
     os.path.join(os.path.dirname(__file__), '../public/challenge-lists')
 )
+api_limit = 30 # for now at least, ultimately we want 32?
 
 def sync_photos():
     known_photos = database.get_all()
@@ -28,7 +29,6 @@ def sync_photos():
     missing_data = [photo for photo in known_photos if not photo['photo_url']]
     print(f'{len(missing_data)} photos missing information')
 
-    api_limit = 15 # for now at least, ultimately we want 32?
     for _, photo in zip(range(api_limit), missing_data):
         unsplash_data = unsplash_api.get_photo_data(photo['provider_id'])
         original_country_name = unsplash_data['location_country']
@@ -99,9 +99,8 @@ def generate_challenge_list():
         last_existing_date = last_existing_list.split('.')[0].split('-')
         year, month = (int(last_existing_date[0]), int(last_existing_date[1])) 
 
-    next_year, next_month = (year, month)    
-    # next_year, next_month = (year, month + 1) if month != 12 \
-    #     else (year + 1, 1)
+    next_year, next_month = (year, month + 1) if month != 12 \
+        else (year + 1, 1)
       
     days_in_month = calendar.monthrange(next_year, next_month)[1]
 
@@ -120,8 +119,8 @@ def generate_challenge_list():
         json.dump(daily_dict, output_file, indent=4)
 
 def main():
-    # sync_photos()
-    generate_challenge_list()
+    sync_photos()
+    # generate_challenge_list()
 
     
 if __name__ == '__main__':

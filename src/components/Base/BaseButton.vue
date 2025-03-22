@@ -1,7 +1,7 @@
 <template>
   <button
     @click="$emit('click')"
-    class="border border-solid border-orange-400 rounded-sm p-1 my-1 w-24 hover:bg-orange-400"
+    class="border border-solid border-orange-900 rounded-sm p-1 my-1 w-24 hover:bg-orange-900"
   >
     {{ text }}
   </button>

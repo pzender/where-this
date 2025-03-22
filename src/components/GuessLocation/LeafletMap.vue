@@ -29,7 +29,7 @@ onMounted(() => {
   })
 
   L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    maxZoom: 6,
+    maxZoom: 8,
     minZoom: 2,
     noWrap: false,
     maxBounds: mapBounds,
@@ -87,6 +87,7 @@ function onClear() {
 
 function onCenter() {
   leafletMap.panTo([0, 0])
+  leafletMap.setZoom(2)
 }
 
 function onLock() {
@@ -99,7 +100,7 @@ function onLock() {
 }
 
 const isExpanded = ref(false)
-const mapCssClass = computed(() => (isExpanded.value ? 'h-128' : 'h-128 lg:h-64 xl:h-96'))
+const mapCssClass = computed(() => (isExpanded.value ? 'h-128' : 'h-96'))
 </script>
 
 <style></style>
