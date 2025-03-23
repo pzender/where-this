@@ -101,11 +101,12 @@ def generate_challenge_list():
 
     next_year, next_month = (year, month + 1) if month != 12 \
         else (year + 1, 1)
+    # next_year, next_month = (year, month)
       
     days_in_month = calendar.monthrange(next_year, next_month)[1]
 
     eligible_photos = database.get_eligible()
-    selections = list(random.choices(eligible_photos, k=min(days_in_month, len(eligible_photos))))
+    selections = list(random.sample(eligible_photos, k=min(days_in_month, len(eligible_photos))))
 
     daily_dict = {}
     for index, selection in zip(range(days_in_month), selections):
