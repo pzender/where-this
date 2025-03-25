@@ -1,7 +1,6 @@
 import { rhumbBearing, point, rhumbDistance, polygon, pointToPolygonDistance } from '@turf/turf'
 import simplifiedBorders from './simplifiedBorders'
-
-export const GUESS_TOLERANCE_KILOMETERS = 50
+import { GUESS_TOLERANCE_KILOMETERS } from './configs'
 
 export function directionAngle(gLat, gLng, aLat, aLng) {
   const guess = point([gLng, gLat])
@@ -23,7 +22,10 @@ export function isGuessCorrect(gLat, gLng, aLat, aLng) {
 
 export function isGuessInCountry(gLat, gLng, countryCode) {
   const guess = point([gLng, gLat])
-  const countryBorders = simplifiedBorders[countryCode].borders.map((l) => polygon([l]))
+  const countryBorders = simplifiedBorders[countryCode].borders
+  const isPoint = countryBorders.length === 1 && countryBorders[0].length === 1
 
-  return countryBorders.some((poly) => pointToPolygonDistance(guess, poly) < 0)
+  return isPoint
+    ? rhumbDistance(guess, point(countryBorders[0])) < GUESS_TOLERANCE_KILOMETERS
+    : countryBorders.some((vertices) => pointToPolygonDistance(guess, polygon([vertices])) < 0)
 }

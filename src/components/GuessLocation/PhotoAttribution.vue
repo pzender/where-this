@@ -1,11 +1,11 @@
 <template>
   <div class="text-center text-xs font-thin italic bg-stone-800 py-1">
     Photo by
-    <a :href="authorLink" class="underline hover:text-orange-900">
+    <a :href="authorLink" class="underline hover:text-highlight">
       {{ authorName }}
     </a>
     on
-    <a :href="unsplashLink" class="underline hover:text-orange-900"> Unsplash</a>
+    <a :href="unsplashLink" class="underline hover:text-highlight"> Unsplash</a>
   </div>
 </template>
 <script setup>

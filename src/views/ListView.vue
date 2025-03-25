@@ -1,7 +1,5 @@
 <template>
-  <h2 class="font-stretch-expanded font-bold py-1 text-lg bg-violet-900 text-center">
-    Previous challenges
-  </h2>
+  <h2 class="base-header">Previous challenges</h2>
   <div v-if="data">
     <div v-for="entry in challenges" :key="entry">
       <history-row v-bind="mapRowDate(entry)" />

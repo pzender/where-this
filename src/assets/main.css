@@ -1,2 +1,24 @@
+@import url('https://fonts.googleapis.com/css2?family=Quattrocento:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Quattrocento+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
 @import 'tailwindcss';
 @import 'primeicons/primeicons.css';
+
+@theme {
+  /* --color-highlight: oklch(0.38 0.189 293.745); */
+  --color-highlight: oklch(0.378 0.077 168.94);
+  --font-quattrocento: 'Quattrocento', serif;
+  --font-quattrocento-sans: 'Quattrocento Sans', sans-serif;
+}
+
+.base-button {
+  @apply border border-solid border-highlight rounded-sm p-1 my-1 w-24 hover:bg-highlight;
+}
+
+.base-header {
+  @apply font-stretch-expanded font-bold font-quattrocento py-1 text-2xl bg-highlight text-center;
+}
+
+body {
+  @apply font-quattrocento-sans;
+}

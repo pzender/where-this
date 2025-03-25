@@ -1,14 +1,12 @@
 <template>
-  <h2 class="font-stretch-expanded font-bold py-1 text-lg bg-violet-900 text-center">
-    Where is this?
-  </h2>
+  <h2 class="base-header">Where is this?</h2>
   <div v-if="locationData">
     <photo-panel :photo-url="locationData.photo_url" />
     <photo-attribution
       :author-name="locationData?.author_name"
       :author-url="locationData?.author_url"
     />
-    <div class="flex flex-col lg:flex-row">
+    <div class="flex flex-col lg:flex-row mt-4">
       <div class="flex-1 order-1 lg:order-2">
         <leaflet-map />
       </div>
@@ -24,7 +22,6 @@
     (whoops, we couldn't find a game at this date. try today's challenge
     <router-link to="/">here</router-link>)
   </div>
-  <div class="order-last text-right text-xs font-thin italic">v.0.3.0</div>
 </template>
 
 <script setup>

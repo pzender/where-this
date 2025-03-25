@@ -1,1 +1,2 @@
 export const ALLOWED_GUESSES = 5
+export const GUESS_TOLERANCE_KILOMETERS = 50

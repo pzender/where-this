@@ -3,11 +3,7 @@
     <img :src="urlWithParams" class="flex-none" />
     <div class="flex-grow p-2 h-full">playable on {{ date }}</div>
     <div class="flex-none p-2 h-full align-middle">
-      <router-link
-        :to="date"
-        class="border border-solid border-violet-900 rounded-sm p-2 my-1 w-24 hover:bg-violet-900"
-        >try!
-      </router-link>
+      <router-link :to="date" class="base-button">try! </router-link>
     </div>
   </div>
 </template>

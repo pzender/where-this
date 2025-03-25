@@ -1,9 +1,9 @@
 <template>
   <div id="map" :class="mapCssClass"></div>
   <div class="flex justify-between">
-    <base-button @click="onClear" text="clear" />
-    <base-button @click="onCenter" text="center map" />
-    <base-button @click="onLock" text="lock" />
+    <button @click="onClear" class="base-button">clear</button>
+    <button @click="onCenter" class="base-button">center map</button>
+    <button @click="onLock" class="base-button">lock</button>
   </div>
 </template>
 
@@ -13,7 +13,6 @@ import * as L from 'leaflet'
 
 import { computed, onMounted, ref } from 'vue'
 import { addGuess, clearGuesses, hasCorrectGuess, isFinished } from '@/utils/store'
-import BaseButton from '../Base/BaseButton.vue'
 
 const mapBounds = L.LatLngBounds(L.LatLng(-90.0, -180.0), L.LatLng(90.0, 180.0))
 let leafletMap = null

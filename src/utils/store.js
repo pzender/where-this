@@ -4,6 +4,8 @@ import { isGuessCorrect } from './geographicUtils'
 
 export const emptyGuesses = () => new Array(ALLOWED_GUESSES).fill(null)
 
+// TODO: this should probably keep entire history as dictionary & work based on dates as keys / keep stuff in localStorage
+
 export const store = reactive({
   guesses: emptyGuesses(),
   target: {},

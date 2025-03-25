@@ -24,13 +24,7 @@
 </template>
 <script setup>
 import { store, isFinished } from '@/utils/store'
-import {
-  directionAngle,
-  distance,
-  GUESS_TOLERANCE_KILOMETERS,
-  isGuessCorrect,
-  isGuessInCountry,
-} from '@/utils/geographicUtils'
+import { directionAngle, distance, isGuessCorrect, isGuessInCountry } from '@/utils/geographicUtils'
 import { computed } from 'vue'
 
 const props = defineProps({
@@ -69,10 +63,10 @@ function mapGuessToIcon(guess) {
 
   const aLat = store.target.lat
   const aLng = store.target.lng
+
+  if (isGuessCorrect(guess.lat, guess.lng, aLat, aLng)) return 'pi pi-bullseye text-green-600'
+
   const distanceToTarget = distance(guess.lat, guess.lng, aLat, aLng)
-
-  if (distanceToTarget < GUESS_TOLERANCE_KILOMETERS) return 'pi pi-bullseye text-green-600'
-
   const heading = directionAngle(guess.lat, guess.lng, aLat, aLng)
   return {
     [heading > -45 && heading <= 45 && distanceToTarget > closeGuessThreshold]:
